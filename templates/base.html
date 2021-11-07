@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Project History Babel</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css"/>
+</head>
+
+<body>
+<section class="hero is-fullheight">
+
+    <div class="hero-head">
+
+        <nav class="level">
+            <div class="level-left">
+                {% if not is_index %}
+                <div class="level-item">
+                    <p class="subtitle is-5">
+                        Project History Babel
+                    </p>
+                </div>
+                {% endif %}
+
+            </div>
+            <div class="level-right">
+                {% if current_user.is_authenticated %}
+
+                {% if not is_index %}
+                <p class="level-item ">
+                    <a class="link is-info" href="{{ url_for('homes.home') }}">Home</a>
+                </p>
+                {% endif %}
+
+                <p class="level-item ">
+                    <a class="link is-info" href="{{ url_for('doc.get_saved_doc_list') }}">Saved Documents</a>
+                </p>
+                <p class="level-item">
+                    <a class="link is-info" href="{{ url_for('doc.create_doc') }}">Add New</a>
+                </p>
+                <p class=" level-item ">
+                    <a href="/logout" class="navbar-item">
+                        Logout
+                    </a>
+                </p>
+                {% else %}
+                <p class="level-item ">
+                    <a href="{{ url_for('auth.login') }}" class="navbar-item">
+                        Login
+                    </a>
+                </p>
+                <p class="level-item ">
+                    <a href="{{ url_for('auth.register') }}" class="navbar-item">
+                        Sign Up
+                    </a>
+                </p>
+                {% endif %}
+            </div>
+        </nav>
+    </div>
+    </nav>
+    </div>
+    <div class="container is-primary has-text-centered">
+
+    </div>
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+</section>
+<script src="http://code.jquery.com/jquery.js"></script>
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+
+</body>
+
+</html>

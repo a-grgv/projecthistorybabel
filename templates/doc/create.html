@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="columns">
+    <div class="column">
+        <div class="box">
+            <h4 class="title is-4">Article</h4>
+            <p>
+                <label for="title">Article Title</label><br>
+                <input class="input is-left is-primary" type="text" id="title" name="title" autofocus>
+            </p>
+            <br>
+            <p>
+                <label for="article">Article Text</label><br>
+                <textarea id="article" class="textarea is-small" rows="10" cols="50"></textarea>
+            </p>
+            <br>
+            <button class="button is-primary is-light" id="generate_button">Generate</button>
+        </div>
+    </div>
+    <div class="column">
+        <div id="summary_box" class="box" style="display:none">
+            <h4 class="title is-4">Article Summary</h4>
+            <div id="summary" class="box">
+            </div>
+        </div>
+    </div>
+    <div class="column">
+        <div id="event_box" class="box" style="display:none">
+            <h4 class="title is-4">Article Events</h4>
+            <table class="table is-fullwidth" id="event">
+                <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Event</th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div id="event_box" class="box">
+    <table class="table is-fullwidth" id="event">
+        <thead>
+        <tr>
+            <th>Document Title</th>
+            <th>Date Created</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in doc_list %}
+        <tr>
+            <td><a href="{{ url_for('doc.get_saved_doc', doc_id=item.id) }}"> {{ item.title }}</a>
+            </td>
+            <td>{{ item.doc_created_date }}</td>
+            <td><a data-confirm="Are you sure?" data-method="delete"
+                   href="{{ url_for('doc.delete_saved_doc',doc_id=item.id) }}">Delete</a></td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
