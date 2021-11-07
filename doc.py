@@ -15,7 +15,9 @@ def create_doc():
         text = form.article.data
         title = form.title.data
         user_id = current_user.id
-        translated_text = translation_service.translate_text(text)[0]['translations'][0]['text']
+        tt = translation_service.translate_text(text)
+        print(tt)
+        translated_text = tt[0]['translations'][0]['text']
         doc_summary = summarization_service.summarize_text(translated_text)
         doc_events = event_extraction_service.extract_all_events(translated_text)
         doc_service.create_new_doc(creator_id=user_id,

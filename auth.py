@@ -1,8 +1,4 @@
-from datetime import datetime, timezone, timedelta
-
-from flask import Blueprint, request, jsonify, render_template, make_response, url_for, flash
-from flask_jwt_extended import create_access_token, unset_jwt_cookies, create_refresh_token, set_access_cookies, \
-    set_refresh_cookies, get_jwt_identity, get_jwt
+from flask import Blueprint, render_template, url_for, flash
 from flask_login import login_user, current_user, login_required, logout_user
 from werkzeug.security import check_password_hash
 from werkzeug.utils import redirect

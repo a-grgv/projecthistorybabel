@@ -6,8 +6,10 @@ COPY ./requirements.txt /backend/requirements.txt
 WORKDIR /backend
 
 # upgrade pip
+EXPOSE 5000
+
 RUN python -m pip install --upgrade pip
 RUN pip install --upgrade setuptools && pip install -r requirements.txt
 COPY . .
 
-CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]
+CMD ["python3", "app.py"]
