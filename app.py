@@ -7,18 +7,10 @@ from models.database import db
 from services import user_service
 from services.login import login_manager
 
-POSTGRES = {
-    'user': 'postgres',
-    'pw': 'my_password',
-    'db': 'babel_db',
-    'host': 'localhost',
-    'port': '54320',
-}
-
 
 def create_app():
     app = Flask(__name__)
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://%(user)s:%(pw)s@%(host)s:%(port)s/%(db)s' % POSTGRES
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://babelpgdbadmin:jPsPqwrth/1}@babel-pgdb.postgres.database.azure.com/postgres?sslmode=require'
     app.config['SECRET_KEY'] = 'wDTW9ob8cCeApj_oHX_anA'
     db.init_app(app)
     login_manager.init_app(app)
