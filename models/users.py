@@ -1,10 +1,15 @@
+"""
+This module contains the model object for users.
+"""
 from flask_login import UserMixin
 from sqlalchemy import Column, Integer, String
-from services.login import LoginManager as login
-from models.database import db
+from utils.application_factories.database import db
 
 
 class User(db.Model, UserMixin):
+    """
+    Postgres model for users
+    """
     __tablename__ = 'users'
     id = Column(Integer, primary_key=True)
     username = Column(String(50), unique=True)
@@ -16,4 +21,3 @@ class User(db.Model, UserMixin):
 
     def __repr__(self):
         return '<User %r>' % (self.username)
-

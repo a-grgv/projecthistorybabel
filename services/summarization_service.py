@@ -1,12 +1,24 @@
-import spacy
+"""
+This module contains methods to create text summaries
+"""
+
+
 from collections import Counter
 from heapq import nlargest
-from spacy.lang.en.stop_words import STOP_WORDS
 from string import punctuation
 
+import spacy
+from spacy.lang.en.stop_words import STOP_WORDS
+from utils.service_constants import SPACY_ENGLISH_MODEL
 
-def summarize_text(doc):
-    nlp = spacy.load("en_core_web_sm")
+
+def summarize_text(doc: str) -> str:
+    """
+    Summarizes text
+    :param doc: Doc to be summarized
+    :return: Summarized doc
+    """
+    nlp = spacy.load(SPACY_ENGLISH_MODEL)
     doc = nlp(doc)
 
     keyword = []

@@ -5,9 +5,9 @@ from flask import Flask
 from auth import auth
 from doc import doc
 from home import homes
-from models.database import db
+from utils.application_factories.database import db
 from services import user_service
-from services.login import login_manager
+from utils.application_factories.login import login_manager
 
 
 def create_app():
@@ -35,6 +35,5 @@ def setup_database(app):
 
 if __name__ == '__main__':
     app = create_app()
-    # Because this is just a demonstration we set up the database like this.
     setup_database(app)
     app.run(host="0.0.0.0")

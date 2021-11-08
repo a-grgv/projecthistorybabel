@@ -1,32 +1,24 @@
-import os
+"""
+This module contains methods to translate text using Azure Translation API
+"""
 
-import requests, uuid
+from typing import List
 
-# Add your subscription key and endpoint
-subscription_key = os.environ["TRANSLATION_KEY"]
-endpoint = "https://api.cognitive.microsofttranslator.com"
+import requests
 
-path = '/translate'
-location = 'germanywestcentral'
-params = {
-    'api-version': '3.0',
-    'to': ['en']
-}
-constructed_url = endpoint + path
-
-headers = {
-    'Ocp-Apim-Subscription-Key': subscription_key,
-    'Ocp-Apim-Subscription-Region': location,
-    'Content-type': 'application/json',
-    'X-ClientTraceId': str(uuid.uuid4())
-}
+from utils.service_constants import TRANSLATE_REQUEST_PARAMS, TRANSLATE_URL, TRANSLATE_HEADERS
 
 
-def translate_text(text):
+def translate_text(text: str) -> List[dict]:
+    """
+    Translate given text
+    :param text: Text to be translated
+    :return: List of translations from detected languages
+    """
     body = [{
         'text': text
     }]
 
-    request = requests.post(constructed_url, params=params, headers=headers, json=body)
+    request = requests.post(TRANSLATE_URL, params=TRANSLATE_REQUEST_PARAMS, headers=TRANSLATE_HEADERS, json=body)
     response = request.json()
     return response
